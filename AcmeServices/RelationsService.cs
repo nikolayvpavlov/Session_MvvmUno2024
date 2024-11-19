@@ -19,7 +19,14 @@ namespace AcmeServices
         public async Task<List<Relation>> GetRelationsAsync(string search)
         {
             await Task.Delay(4000);
-            return context.Relations.Where (r => r.Name.Contains (search, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                return context.Relations.ToList();
+            }
+            else
+            {
+                return context.Relations.Where(r => r.Name.Contains(search, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            }
         }
 
         public async Task<Relation> AddRelationAsync (Relation r)
