@@ -1,0 +1,38 @@
+﻿@page "/relations"
+@rendermode InteractiveServer
+
+<PageTitle>Relations</PageTitle>
+
+<h1>Relations</h1>
+
+<label>
+    Search: <InputText id="searchTextInput" @bind-Value="SearchText" /> <button class="btn btn-primary" @onclick="SearchRelationsAsync">Search</button>
+</label>
+
+<div>
+    <p hidden="@(!RelationsViewModel.IsLoading)">Searching...  Please wait.</p>
+    
+    <table hidden="@(!RelationsViewModel.DataVisible)">
+        <thead>
+            <tr>
+                <th scope="col">Company name</th>
+                <th scope="col">Country</th>
+                <th scope="col">Contact person</th>
+                <th scope="col">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in RelationsViewModel.Data)
+            {
+                <tr>
+                    <td scope="row">@item.Name</td>
+                    <td scope="row">@item.Country</td>
+                    <td scope="row">@item.ContactPerson</td>
+                    <td scope="row">@item.Phone</td>
+                </tr>
+            }
+        </tbody>    
+    </table>
+</div>
+
+
