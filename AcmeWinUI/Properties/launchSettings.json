@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AcmeWinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AcmeWinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

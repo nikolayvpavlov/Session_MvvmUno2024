@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="AcmeWinUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcmeWinUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop Kind="BaseAlt" />
+    </Window.SystemBackdrop>
+
+    <NavigationView x:Name="navigationView" Background="Transparent" IsSettingsVisible="False"
+                    SelectionChanged="navigationView_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Name="nviHome" Icon="Home" Content="Home" Tag="Home" />
+            <NavigationViewItem x:Name="nviRelations" Icon="People" Content="Relations" Tag="Relations" />
+        </NavigationView.MenuItems>
+        <NavigationView.ContentTransitions>
+            <NavigationThemeTransition>
+                <SlideNavigationTransitionInfo Effect="FromLeft" />
+            </NavigationThemeTransition>
+        </NavigationView.ContentTransitions>
+        <Frame x:Name="nvFrame" />
+    </NavigationView>
+</Window>
