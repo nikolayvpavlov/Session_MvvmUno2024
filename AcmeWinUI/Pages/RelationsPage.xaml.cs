@@ -26,15 +26,6 @@ namespace AcmeWinUI.Pages
     {
         public RelationsSearchViewModel RelationsSearchVM { get; set; }
 
-        public Visibility DataVisible
-        {
-            get
-            {
-                if (RelationsSearchVM.DataVisible) return Visibility.Visible;
-                else return Visibility.Collapsed;
-            }
-        }
-
         public RelationsPage()
         {
             this.InitializeComponent();
@@ -48,7 +39,7 @@ namespace AcmeWinUI.Pages
 
         private async void searchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            await RelationsSearchVM?.SearchDataAsync(args.QueryText);            
+            await RelationsSearchVM?.SearchDataAsync();            
         }
     }
 }

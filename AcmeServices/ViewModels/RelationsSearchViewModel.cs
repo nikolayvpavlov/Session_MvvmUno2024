@@ -18,6 +18,8 @@ namespace AcmeServices.ViewModels
 
         public ObservableCollection<Relation> Data { get; set; }
 
+        public string SearchString { get; set; }
+
         private bool isLoading;
         public bool IsLoading
         {
@@ -58,13 +60,13 @@ namespace AcmeServices.ViewModels
             Data = new ObservableCollection<Relation>();
         }
 
-        public async Task SearchDataAsync (string search)
+        public async Task SearchDataAsync ()
         {
             IsLoading = true;
             try
             {
                 Data.Clear();
-                var data = await RelationsService.GetRelationsAsync(search);
+                var data = await RelationsService.GetRelationsAsync(SearchString);
                 foreach (var relation in data)
                 {
                     Data.Add(relation);

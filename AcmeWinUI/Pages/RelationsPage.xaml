@@ -6,13 +6,11 @@
     xmlns:local="using:AcmeWinUI.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:data="using:AcmeServices.Models"
-    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
+    xmlns:data="using:AcmeServices.Models"    
     mc:Ignorable="d"
     Background="Transparent">
 
     <Page.Resources>
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisiblity" />
         <DataTemplate x:Key="RelationsTemplate" x:DataType="data:Relation">
             <ItemContainer HorizontalAlignment="Stretch">
                 <Grid Padding="24,12,24,12" HorizontalAlignment="Stretch">
@@ -49,14 +47,16 @@
         <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Grid.Row="0">Relations</TextBlock>
         
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <AutoSuggestBox x:Name="searchBox" Width="300" VerticalAlignment="Top" PlaceholderText="Search relations" QueryIcon="Find" QuerySubmitted="searchBox_QuerySubmitted" />
+            <AutoSuggestBox x:Name="searchBox" Width="300" VerticalAlignment="Top" PlaceholderText="Search relations" QueryIcon="Find" 
+                            Text="{x:Bind RelationsSearchVM.SearchString, Mode=TwoWay}"
+                            QuerySubmitted="searchBox_QuerySubmitted" />
             
         </StackPanel>
         <ProgressRing x:Name="progressRing" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="64" Height="64"
             IsActive="{x:Bind RelationsSearchVM.IsLoading, Mode=OneWay}" />
 
         <ItemsView x:Name="itemsViewSearchResults" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                   ItemTemplate="{StaticResource RelationsTemplate}" Visibility="{x:Bind RelationsSearchVM.DataVisible, Mode=OneWay, Converter={StaticResource BoolToVisiblity}}" 
+                   ItemTemplate="{StaticResource RelationsTemplate}"  
                    ItemsSource="{x:Bind RelationsSearchVM.Data}" />
     </Grid>
 </Page>
