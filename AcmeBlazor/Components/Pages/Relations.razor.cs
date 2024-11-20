@@ -8,11 +8,9 @@ namespace AcmeBlazor.Components.Pages
         [Inject]
         public RelationsSearchViewModel RelationsViewModel { get; set; }
 
-        private string SearchText { get; set; }
-
         public async Task SearchRelationsAsync()
         {
-            await RelationsViewModel.SearchDataAsync(SearchText);
+            await RelationsViewModel.SearchDataAsync();
         }
     }
 }

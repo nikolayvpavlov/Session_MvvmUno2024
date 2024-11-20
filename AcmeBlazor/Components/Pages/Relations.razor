@@ -8,7 +8,7 @@
 <p />
 
 <label>
-    Search: <InputText id="searchTextInput" @bind-Value="SearchText" class="input-lg control"/> <button class="btn btn-primary" @onclick="SearchRelationsAsync">Search</button>
+    Search: <InputText id="searchTextInput" @bind-Value="RelationsViewModel.SearchString" class="input-lg control" /> <button class="btn btn-primary" @onclick="SearchRelationsAsync">Search</button>
 </label>
 
 <p />
@@ -16,7 +16,7 @@
 <div>
     <p hidden="@(!RelationsViewModel.IsLoading)">Searching...  Please wait.</p>
     
-    <table hidden="@(!RelationsViewModel.DataVisible)" class="table">
+    <table hidden="@(RelationsViewModel.IsLoading)" class="table">
         <thead>
             <tr>
                 <th scope="col">Company name</th>
